@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <button @click="reduce">-</button>
+      {{res}}
+      <button @click="add">+</button>
+      總價:{{pares()}}
+    </div>
+    <script src="https://unpkg.com/vue@3.4.27/dist/vue.global.js"></script>
+    <script>
+      console.log(Vue);
+      Vue.createApp({
+        data() {
+          return {
+            res: 0,
+            const: 1, // 命名變數為1
+            total:0
+          };
+        },
+        methods: {      //放在整個Vue裡面
+          add() {
+            if (this.res >= 10) return;
+            this.res += this.const;     // this 是指Vue 
+          },
+          reduce() {
+            if (this.res <= 0) return;
+            this.res -= this.const;
+          },
+          pares(){
+            console.log('asdasdasdsa');
+            return this.total=this.res*10
+          }
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
