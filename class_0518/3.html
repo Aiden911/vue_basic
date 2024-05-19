@@ -12,6 +12,7 @@
       {{res}}
       <button @click="add">+</button>
       總價:{{pares()}}
+      美金:{{paresDollar()}}
     </div>
     <script src="https://unpkg.com/vue@3.4.27/dist/vue.global.js"></script>
     <script>
@@ -21,22 +22,26 @@
           return {
             res: 0,
             const: 1, // 命名變數為1
-            total:0
+            total: 0,
           };
         },
-        methods: {      //放在整個Vue裡面
+        methods: {
+          //放在整個Vue裡面
           add() {
-            if (this.res >= 10) return;
-            this.res += this.const;     // this 是指Vue 
+            if (this.res >= 10) return; // 大於10 不能再加
+            this.res += this.const; // this 是指Vue
           },
           reduce() {
-            if (this.res <= 0) return;
+            if (this.res <= 0) return; //小於0 不能再減
             this.res -= this.const;
           },
-          pares(){
-            console.log('asdasdasdsa');
-            return this.total=this.res*10
-          }
+          pares() {
+            console.log("asdasdasdsa");
+            return (this.total = this.res * 100);
+          },
+          paresDollar() {
+            return this.total / 30;  // 不是好的寫法 後面有更好的方法
+          },
         },
       }).mount("#app");
     </script>
