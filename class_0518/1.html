@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{name}}要去買,{{phone[2023][1]}}</p>
+    <p v-text="age"></p>
+    <p v-text=" color[0]"></p>
+    <p v-text="  phone[2022][1]"></p>   
+    <p v-html = " content"></p>
+    <p>{{live?"活著":"掛了"}}</p>
+  </div>
+  <script src="https://unpkg.com/vue@3.4.27/dist/vue.global.js"></script>
+  <script>
+    // debugger     debug用
+    // console.log(Vue)
+    const app = Vue.createApp({
+      data() {
+        return {
+          name: "Aiden",
+          age: 666,
+          live: false,
+          color: ["red", "blue", "green"],
+          phone: {
+            2022: ["iphon12", "iphone12pro"],
+            2023: ["iphone13", "iphone13pro"],
+          },
+          gender:null,
+          content:`<div style="color: red;">
+            嘿嘿<br>
+            123
+            </div>`
+        };
+      },
+    });
+    app.mount("#app"); //mount到 #app
+  </script>
+</body>
+
+</html>
