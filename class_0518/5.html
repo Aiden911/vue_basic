@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+img{
+width: 5rem;
+padding: 15px;
+}
+</style>
+</head>
+<body>
+  <div id="app">
+<button @click="addW(),changrcolor()">加大圖片</button>
+{{widths}}
+<img src="/img/紅棗.png" alt="">
+<!-- <img :src="imgUrl" style="width: 6rem;" alt=""> -->
+<img :src="imgUrl" :style="{
+width: `${widths}rem`,
+backgroundColor: bg}" alt="">
+</div>
+
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+Vue.createApp({
+data(){
+return {
+imgUrl: "/img/紅棗.png",
+bg:'#999',//string
+widths:2,//Number
+}
+},
+methods: {
+addW(){
+//每次按下去加大圖片
+this.widths += 1;
+if(this.widths===9){
+  this.widths=0;
+}
+this.bg=`#${this.widths}${this.widths}${this.widths}`;
+},
+
+},
+}).mount('#app')
+</script>
+
+</body>
+</html>
