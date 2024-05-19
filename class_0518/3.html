@@ -11,8 +11,10 @@
       <button @click="reduce">-</button>
       {{res}}
       <button @click="add">+</button>
-      總價:{{pares()}}
-      美金:{{paresDollar()}}
+      <!-- 總價:{{pares()}}
+      美金:{{paresDollar()}} -->
+      總價:{{pares1}}
+      美金:{{dollar}}
     </div>
     <script src="https://unpkg.com/vue@3.4.27/dist/vue.global.js"></script>
     <script>
@@ -22,7 +24,8 @@
           return {
             res: 0,
             const: 1, // 命名變數為1
-            total: 0,
+            price: 100,
+            // total: 0,
           };
         },
         methods: {
@@ -34,15 +37,23 @@
           reduce() {
             if (this.res <= 0) return; //小於0 不能再減
             this.res -= this.const;
-          },
-          pares() {
-            console.log("asdasdasdsa");
-            return (this.total = this.res * 100);
-          },
-          paresDollar() {
-            return this.total / 30;  // 不是好的寫法 後面有更好的方法
-          },
+          } , 
+          // pares() {
+          //   console.log("asdasdasdsa");
+          //   return (this.total = this.res * 100);
+          // },
+          // paresDollar() {
+          //   return this.total / 30;  // 不是好的寫法 後面有更好的方法
+          // },
         },
+        computed:{
+          pares1() {
+            return this.price *this.res 
+          },
+          dollar(){
+            return this.pares1/30
+          }
+        }
       }).mount("#app");
     </script>
   </body>
